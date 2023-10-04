@@ -1,11 +1,11 @@
-CREATE TABLE "Player"(
+CREATE TABLE "player"(
     "id" BIGINT NOT NULL,
     "Name" VARCHAR(255) NOT NULL,
     "deckId" BIGINT NOT NULL
 );
 ALTER TABLE
-    "Player" ADD PRIMARY KEY("id");
-CREATE TABLE "Card"(
+    "player" ADD PRIMARY KEY("id");
+CREATE TABLE "card"(
     "id" BIGINT NOT NULL,
     "CardNumber" VARCHAR(255) NOT NULL,
     "CardName" VARCHAR(255) NOT NULL,
@@ -21,18 +21,18 @@ CREATE TABLE "Card"(
     "CardAdvantage" BIGINT NOT NULL
 );
 ALTER TABLE
-    "Card" ADD PRIMARY KEY("id");
-CREATE TABLE "Deck"(
+    "card" ADD PRIMARY KEY("id");
+CREATE TABLE "deck"(
     "id" BIGINT NOT NULL,
     "DeckName" VARCHAR(255) NOT NULL,
     "RideDeck" BIGINT NOT NULL,
     "cardId" BIGINT NOT NULL
 );
 ALTER TABLE
-    "Deck" ADD PRIMARY KEY("id");
+    "deck" ADD PRIMARY KEY("id");
 ALTER TABLE
-    "Deck" ADD CONSTRAINT "deck_ridedeck_foreign" FOREIGN KEY("RideDeck") REFERENCES "Card"("id");
+    "deck" ADD CONSTRAINT "deck_ridedeck_foreign" FOREIGN KEY("RideDeck") REFERENCES "card"("id");
 ALTER TABLE
-    "Deck" ADD CONSTRAINT "deck_cardid_foreign" FOREIGN KEY("cardId") REFERENCES "Card"("id");
+    "deck" ADD CONSTRAINT "deck_cardid_foreign" FOREIGN KEY("cardId") REFERENCES "card"("id");
 ALTER TABLE
-    "Player" ADD CONSTRAINT "player_deckid_foreign" FOREIGN KEY("deckId") REFERENCES "Deck"("id");
+    "player" ADD CONSTRAINT "player_deckid_foreign" FOREIGN KEY("deckId") REFERENCES "deck"("id");

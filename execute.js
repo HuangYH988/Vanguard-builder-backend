@@ -13,7 +13,7 @@ const pool = new Pool({
 // Read the SQL file
 const fs = require("fs");
 const sqlScript = fs.readFileSync(
-  "drawSQL-pgsql-export-2023-09-22.sql",
+  "./drawSQL-pgsql-export-2023-09-22.sql",
   "utf8"
 );
 
