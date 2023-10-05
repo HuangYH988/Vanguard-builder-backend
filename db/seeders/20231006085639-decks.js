@@ -6,12 +6,12 @@ module.exports = {
     await queryInterface.bulkInsert("decks", [
       {
         deck_name: "Trolling Adalaide",
-        player_id: 0,
-        ride_deck: [0, 0, 0, 0],
-        triggers: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        player_id: 1,
+        ride_deck: [1, 1, 1, 1],
+        triggers: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         main_deck: [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0,
+          1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+          1, 1, 1, 1, 1, 1, 1,
         ],
       },
     ]);
