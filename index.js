@@ -16,30 +16,30 @@ const app = express();
 // importing Routers
 const DeckRouter = require("./routers/deckRouter");
 const CardRouter = require("./routers/cardRouter");
-const UserRouter = require("./routers/userRouter");
+const PlayerRouter = require("./routers/playerRouter");
 
 // importing Controllers
 const DeckController = require("./controllers/deckController");
 const CardController = require("./controllers/cardController");
-const UserController = require("./controllers/userController");
+const PlayerController = require("./controllers/playerController");
 
 // importing DB
 const db = require("./db/models/index");
-const { deck, card, user, deck_card, user_deck } = db;
+const { decks, cards, players } = db;
 
 // initializing Controllers -> note the lowercase for the first word
-const deckController = new DeckController(deck, card, deck_card);
-const cardController = new CardController(card);
-const userController = new UserController(user, deck, user_deck);
+const deckController = new DeckController(decks);
+const cardController = new CardController(cards);
+const playerController = new PlayerController(players,decks);
 
 // initializing Routers
-const deckRouter = new DeckRouter(express, taskController).routes();
+const deckRouter = new DeckRouter(express, deckController).routes();
 const cardRouter = new CardRouter(
   express,
-  projectController
+  cardController
   //checkJwt
 ).routes();
-const userRouter = new UserRouter(express, userController).routes();
+const playerRouter = new PlayerRouter(express, playerController).routes();
 
 // Enable CORS access to this server
 app.use(cors());
@@ -50,7 +50,7 @@ app.use(express.json());
 // USING the routers
 app.use("/deck", deckRouter);
 app.use("/card", cardRouter);
-app.use("/user", userRouter);
+app.use("/player", playerRouter);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);

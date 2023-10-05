@@ -15,6 +15,11 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: "New deck",
       },
+      player_id: {
+        allowNull: true,
+        type: Sequelize.BIGINT,
+        references: { model: "players", key: "id" },
+      },
       ride_deck: {
         allowNull: true,
         type: Sequelize.ARRAY(Sequelize.BIGINT),

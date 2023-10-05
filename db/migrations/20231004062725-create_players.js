@@ -15,11 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       player_email: { allowNull: true, type: Sequelize.STRING },
-      deck_id: {
-        allowNull: true,
-        type: Sequelize.BIGINT,
-        references: { model: "decks", key: "id" },
-      },
+
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

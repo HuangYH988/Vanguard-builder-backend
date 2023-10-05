@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-const { sequelize } = require(".");
 
 module.exports = (sequelize, DataTypes) => {
   class Card extends Model {}
@@ -22,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
       soul_blast: DataTypes.INTEGER,
       soul_charge: DataTypes.INTEGER,
     },
-    { sequelize, modelName: "cards" }
+    {
+      sequelize,
+      modelName: "cards",
+      underscored: true,
+      freezeTableName: true,
+    }
   );
+  return Card;
 };
