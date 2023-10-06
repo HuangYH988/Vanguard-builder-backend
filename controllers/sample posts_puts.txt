@@ -1,0 +1,45 @@
+Sample card post
+{
+    "card_number": "DSD01-001",
+      "card_name": "Chakrabarthi Divine Dragon, Nirvana",
+      "image_link":
+        "https://static.wikia.nocookie.net/cardfight/images/5/5d/D-SD01-001_(Sample).png/",
+      "nation": "Dragon Empire",
+      "card_type": "Unit",
+      "grade": 3,
+      "power": 13000,
+      "shield": 0,
+      "trigger": null,
+      "is_sentinel": false,
+      "effect": "[ACT](VC)1/Turn:COST [Discard a card from your hand], choose a grade 0 card from your drop, and call it to (RC).\n    [AUTO](VC):When this unit attacks, COST [Counter Blast (1)], and this unit and all of your units with the [overDress] ability get [Power]+10000 until end of turn. ",
+      "card_advantage": 0,
+      "counter_blast": true,
+      "counter_charge": false,
+      "soul_blast": false,
+      "soul_charge": false
+}
+
+Sample player post
+{
+    "player_name": "Kondo Yuyu",
+    "player_email": "overDress@vanguard.com"
+}
+
+Sample deck post
+{
+    "id": "1",
+    "deck_name": "Holy Dragon",
+    "player_id": "2",
+    "ride_deck": [
+      "6", "5", "4", "2"
+    ],
+    "triggers": [
+      "12", "13", "13", "13", "13", "14", "14", "14",
+      "14", "15", "15", "15", "16", "16", "16", "16"],
+    "main_deck": [
+      "2", "2", "2", "4", "4", "4", "5", "5",
+      "5", "7", "7", "7", "8", "8", "8", "8",      
+      "9", "9", "9", "10", "10", "10", "10",
+      "11", "11", "11", "11", "17", "17", "17"]
+      
+}

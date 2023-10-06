@@ -52,7 +52,7 @@ module.exports = {
       },
       effect: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       card_advantage: {
         allowNull: true,

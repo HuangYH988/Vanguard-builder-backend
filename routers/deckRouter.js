@@ -1,18 +1,21 @@
 class deckRouter {
-    constructor(express,controller) {
-      this.express = express;
-      this.controller = controller;
-      //this.checkJwt = checkJwt;
-    }
-    routes() {
-      const router = this.express.Router();
-      router.get("/",this.controller.getAll.bind(this.controller));
-    //   router.get("/:projectId", this.checkJwt, this.controller.getOneProject.bind(this.controller));
-    //   router.post("/", this.checkJwt, this.controller.postOneProject.bind(this.controller));
-    //   router.put("/:projectId", this.checkJwt, this.controller.putOneProject.bind(this.controller));
-    //   router.delete("/:projectId", this.checkJwt, this.controller.deleteOneProject.bind(this.controller));
-      return router;
-    }
+  constructor(express, controller) {
+    this.express = express;
+    this.controller = controller;
+    //this.checkJwt = checkJwt;
   }
-  
-  module.exports = deckRouter;
+  routes() {
+    const router = this.express.Router();
+    router.get("/", this.controller.getAll.bind(this.controller));
+    router.get("/:deckId", this.controller.getOneDeck.bind(this.controller));
+    router.post("/", this.controller.postOneDeck.bind(this.controller));
+    router.put("/:deckId", this.controller.putOneDeck.bind(this.controller));
+    router.delete(
+      "/:deckId",
+      this.controller.deleteOneDeck.bind(this.controller)
+    );
+    return router;
+  }
+}
+
+module.exports = deckRouter;
