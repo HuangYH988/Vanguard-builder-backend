@@ -28,9 +28,9 @@ const db = require("./db/models/index");
 const { decks, cards, players } = db;
 
 // initializing Controllers -> note the lowercase for the first word
-const deckController = new DeckController(decks);
+const deckController = new DeckController(decks, players);
 const cardController = new CardController(cards);
-const playerController = new PlayerController(players,decks);
+const playerController = new PlayerController(players, decks);
 
 // initializing Routers
 const deckRouter = new DeckRouter(express, deckController).routes();

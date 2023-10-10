@@ -8,6 +8,7 @@ class deckRouter {
     const router = this.express.Router();
     router.get("/", this.controller.getAll.bind(this.controller));
     router.get("/:deckId", this.controller.getOneDeck.bind(this.controller));
+    router.get("/player", this.controller.getNameDeck.bind(this.controller));
     router.post("/", this.controller.postOneDeck.bind(this.controller));
     router.put("/:deckId", this.controller.putOneDeck.bind(this.controller));
     router.delete(

@@ -1,8 +1,9 @@
 const Sequelize = require("sequelize");
 
 class DeckController {
-  constructor(model) {
+  constructor(model, model2) {
     this.model = model;
+    this.PlayerModel = model2;
   }
 
   // Retrieve all tasks
@@ -14,6 +15,7 @@ class DeckController {
       return res.status(400).json({ error: true, msg: err.message });
     }
   }
+
   async getOneDeck(req, res) {
     const { deckId } = req.params;
     try {
@@ -23,6 +25,25 @@ class DeckController {
       return res.status(400).json({ error: true, msg: err.message });
     }
   }
+  async getNameDeck(req, res) {
+    const { deck_name } = req.body;
+    try {
+      const output = await this.model.findAll({
+        where: { deck_name: deck_name },
+        include: [
+          {
+            model: this.PlayerModel,
+            attributes: ["id", "other_player_attributes"],
+          },
+        ], // Adjust 'other_player_attributes' accordingly
+      });
+      return res.json(output);
+    } catch (err) {
+      console.error(err); // Log the error for debugging
+      return res.status(400).json({ error: true, msg: err.message });
+    }
+  }
+
   async postOneDeck(req, res) {
     try {
       // Get the input data from the request body
