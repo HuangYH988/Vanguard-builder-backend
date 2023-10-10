@@ -25,19 +25,17 @@ class DeckController {
       return res.status(400).json({ error: true, msg: err.message });
     }
   }
-  async getNameDeck(req, res) {
-    const { deck_name } = req.body;
+  async getPlayerDeck(req, res) {
+    const { playerid } = req.params;
     try {
-      const output = await this.model.findAll({
-        where: { deck_name: deck_name },
-        include: [
-          {
-            model: this.PlayerModel,
-            attributes: ["id", "other_player_attributes"],
-          },
-        ], // Adjust 'other_player_attributes' accordingly
-      });
-      return res.json(output);
+      const output = await this.model.findAll();
+      const deckList=[]
+      for (const deck in output){
+        if (output[deck].player_id === playerid){
+          deckList.push(output[deck])
+        }
+      }
+      return res.json(deckList);
     } catch (err) {
       console.error(err); // Log the error for debugging
       return res.status(400).json({ error: true, msg: err.message });
