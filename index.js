@@ -1,17 +1,17 @@
 const cors = require("cors");
 const express = require("express");
-//const { auth } = require("express-oauth2-jwt-bearer");
+const { auth } = require("express-oauth2-jwt-bearer");
 
 require("dotenv").config();
 
 const PORT = process.env.PORT || 2999;
 const app = express();
 
-// const checkJwt = auth({
-//   audience: process.env.API_AUDIENCE,
-//   issuerBaseURL: process.env.API_ISSUERBASEURL,
-//   tokenSigningAlg: process.env.API_TOKEN_ALGORITHM,
-// });
+const checkJwt = auth({
+  audience: process.env.API_AUDIENCE,
+  issuerBaseURL: process.env.API_ISSUERBASEURL,
+  tokenSigningAlg: process.env.API_TOKEN_ALGORITHM,
+});
 
 // importing Routers
 const DeckRouter = require("./routers/deckRouter");
@@ -33,13 +33,13 @@ const cardController = new CardController(cards);
 const playerController = new PlayerController(players, decks);
 
 // initializing Routers
-const deckRouter = new DeckRouter(express, deckController).routes();
+const deckRouter = new DeckRouter(express, deckController, checkJwt).routes();
 const cardRouter = new CardRouter(
   express,
-  cardController
-  //checkJwt
+  cardController,
+  checkJwt
 ).routes();
-const playerRouter = new PlayerRouter(express, playerController).routes();
+const playerRouter = new PlayerRouter(express, playerController, checkJwt).routes();
 
 // Enable CORS access to this server
 app.use(cors());

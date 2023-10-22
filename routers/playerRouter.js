@@ -1,8 +1,8 @@
 class playerRouter {
-  constructor(express, controller) {
+  constructor(express, controller, checkJwt) {
     this.express = express;
     this.controller = controller;
-    //this.checkJwt = checkJwt;
+    this.checkJwt = checkJwt;
   }
   routes() {
     const router = this.express.Router();
