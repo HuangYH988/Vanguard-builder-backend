@@ -1,5 +1,0 @@
-API_AUDIENCE='https://vanguard-builder/api'
-API_ISSUERBASEURL='https://dev-3xmr2paxq2bxqrez.us.auth0.com/'
-API_TOKEN_ALGORITHM=RS256
-
-npm i --save express-oauth2-jwt-bearer
