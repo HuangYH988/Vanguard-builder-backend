@@ -7,17 +7,20 @@ class playerRouter {
   routes() {
     const router = this.express.Router();
     router.get("/", this.controller.getAll.bind(this.controller));
-    router.get(
-      "/:playerId",
-      this.controller.getOneUser.bind(this.controller)
+    router.get("/:playerId", this.controller.getOneUser.bind(this.controller));
+    router.post(
+      "/",
+      this.checkJwt,
+      this.controller.postOneUser.bind(this.controller)
     );
-    router.post("/", this.controller.postOneUser.bind(this.controller));
     router.put(
       "/:playerId",
+      this.checkJwt,
       this.controller.putOneUser.bind(this.controller)
     );
     router.delete(
       "/:playerId",
+      
       this.controller.deleteOneUser.bind(this.controller)
     );
     return router;
