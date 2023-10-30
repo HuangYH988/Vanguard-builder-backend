@@ -93,7 +93,7 @@ class DeckController {
   async deleteOneDeck(req, res) {
     const { deckId } = req.params;
     try {
-      const existing = await this.model.findByPk(playerId);
+      const existing = await this.model.findByPk(deckId);
       if (!existing) {
         return res.status(404).json({ error: true, msg: "Deck not found." });
       }
