@@ -30,6 +30,7 @@ class deckRouter {
       this.checkJwt,
       this.controller.deleteOneDeck.bind(this.controller)
     );
+    router.get("/getImage/:deckId", this.controller.generateDeckImage.bind(this.controller))
     return router;
   }
 }

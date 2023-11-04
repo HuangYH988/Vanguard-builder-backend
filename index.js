@@ -2,6 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const { auth } = require("express-oauth2-jwt-bearer");
 
+
 require("dotenv").config();
 
 const PORT = process.env.PORT || 2999;
@@ -28,7 +29,7 @@ const db = require("./db/models/index");
 const { decks, cards, players } = db;
 
 // initializing Controllers -> note the lowercase for the first word
-const deckController = new DeckController(decks, players);
+const deckController = new DeckController(decks, cards);
 const cardController = new CardController(cards);
 const playerController = new PlayerController(players, decks);
 
