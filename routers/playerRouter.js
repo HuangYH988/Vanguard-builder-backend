@@ -20,7 +20,7 @@ class playerRouter {
     );
     router.delete(
       "/:playerId",
-      
+      this.checkJwt,
       this.controller.deleteOneUser.bind(this.controller)
     );
     return router;
